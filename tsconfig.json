@@ -1,0 +1,11 @@
+{
+  // para onde o compilador irá enviar os arquivos compilados para JS e em qual versão do JS
+  "compilerOptions": {
+    "outDir": "dist/js",
+    "target": "ES6",
+    // só irá compilar para JS caso exista erros no TS
+    "noEmitOnError": true
+  },
+  // onde estão os arquivos ts a serem compilados?
+  "include": ["app/**/*"]
+}
