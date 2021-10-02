@@ -4,7 +4,8 @@
     "outDir": "dist/js",
     "target": "ES6",
     // só irá compilar para JS caso exista erros no TS
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "noImplicitAny": true
   },
   // onde estão os arquivos ts a serem compilados?
   "include": ["app/**/*"]
