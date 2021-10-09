@@ -9,6 +9,7 @@
     // irá remover comentários do código qd complilar para JS
     "removeComments": true,
     "strictNullChecks": true,
+    "experimentalDecorators": true,
   },
   // onde estão os arquivos ts a serem compilados?
   "include": ["app/**/*", "dist"]
