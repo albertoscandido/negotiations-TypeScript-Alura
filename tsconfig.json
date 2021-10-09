@@ -5,8 +5,11 @@
     "target": "ES6",
     // só irá compilar para JS caso exista erros no TS
     "noEmitOnError": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    // irá remover comentários do código qd complilar para JS
+    "removeComments": true,
+    "strictNullChecks": true,
   },
   // onde estão os arquivos ts a serem compilados?
-  "include": ["app/**/*"]
+  "include": ["app/**/*", "dist"]
 }

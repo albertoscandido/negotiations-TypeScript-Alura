@@ -7,13 +7,17 @@ import { NegociacoesView } from "./views/negociacoes-view.js";
 // console.log(negociacao.volume);
 
 const controller = new NegociacaoController;
-
+// ol´a chama o método adiciona
 const form = document.querySelector('.form');
-form.addEventListener('submit', (e: Event) => {
-  e.preventDefault();
-
-  controller.adiciona();
-});
+if (form) {
+  form.addEventListener('submit', (e: Event) => {
+    e.preventDefault();
+  
+    controller.adiciona();
+  });
+} else {
+  throw new Error('Não foi possível inicializa a aplicação');
+}
 
 // const negociacoesView = new NegociacoesView();
 // const template = negociacoesView.template();
