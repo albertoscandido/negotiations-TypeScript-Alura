@@ -7,7 +7,7 @@ import { NegociacoesView } from "./views/negociacoes-view.js";
 // console.log(negociacao.volume);
 
 const controller = new NegociacaoController;
-// ol´a chama o método adiciona
+
 const form = document.querySelector('.form');
 if (form) {
   form.addEventListener('submit', (e: Event) => {

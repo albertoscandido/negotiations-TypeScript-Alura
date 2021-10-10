@@ -10,7 +10,7 @@ export class NegociacaoController {
   private inputQuantidade: HTMLInputElement;
   private inputValor: HTMLInputElement;
   private negociacoes = new Negociacoes();
-  private negociacoesView = new NegociacoesView('#negociacoes-view', true);
+  private negociacoesView = new NegociacoesView('#negociacoes-view');
   private mensagemView = new MensagemView('#mensagem-view');
 
   constructor() {
@@ -20,7 +20,7 @@ export class NegociacaoController {
     this.negociacoesView.update(this.negociacoes);
   }
 
-  @logarTempoDeExecucao()
+  @logarTempoDeExecucao(true)
   public adiciona(): void {
     
     const negociacao = Negociacao.criaDe(
