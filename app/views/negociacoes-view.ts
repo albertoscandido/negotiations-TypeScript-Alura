@@ -6,7 +6,6 @@ export class NegociacoesView extends View<Negociacoes> {
 
   @escapar
   protected template(model: Negociacoes): string {
-    console.log('entrou');
     
     return `
     <table class="table table-hover table-bordered">
