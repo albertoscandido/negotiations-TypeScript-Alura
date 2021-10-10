@@ -16,7 +16,17 @@ if (form) {
     controller.adiciona();
   });
 } else {
-  throw new Error('Não foi possível inicializa a aplicação');
+  throw new Error('Não foi possível inicializar a aplicação');
+}
+
+const botaoImporta = document.querySelector('#botao-importar');
+
+if (botaoImporta) {
+  botaoImporta.addEventListener('click', () => {
+    controller.importarDatos();
+  });
+} else {
+  throw new Error('Botão importa não encontrado');
 }
 
 // const negociacoesView = new NegociacoesView();

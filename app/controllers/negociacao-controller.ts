@@ -5,6 +5,7 @@ import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
+import { NegociacoesService } from '../services/negociacoes-service.js'
 
 export class NegociacaoController {
   @domInjector('#data')
@@ -16,6 +17,7 @@ export class NegociacaoController {
   private negociacoes = new Negociacoes();
   private negociacoesView = new NegociacoesView('#negociacoes-view');
   private mensagemView = new MensagemView('#mensagem-view');
+  private negociacaoService = new NegociacoesService;
 
   constructor() {
     this.negociacoesView.update(this.negociacoes);
@@ -38,6 +40,14 @@ export class NegociacaoController {
     this.negociacoes.adiciona(negociacao);
     this.limparFormulário();
     this.atualizaView();
+  }
+
+  importarDatos(): void {
+    this.negociacaoService.obterNegocicacoesDoDia()
+      .then((negociacoesDeHoje) => {
+        negociacoesDeHoje.forEach(negociacao => this.negociacoes.adiciona(negociacao));
+        this.negociacoesView.update(this.negociacoes);
+      })
   }
 
   private ehDiaUtil(data: Date): boolean {
