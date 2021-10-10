@@ -1,4 +1,6 @@
-export class Negociacao {
+import { Imprimivel } from "../utils/imprimivel.js";
+
+export class Negociacao implements Imprimivel {
   // método comum
   // private _data: Date;
   // private _quantidade: number;
@@ -18,11 +20,6 @@ export class Negociacao {
     public readonly valor: number
   ) {}
 
-  // get quantidade(): number { return this.quantidade; }
-  // get valor(): number { return this.valor; }
-  get data(): Date { return new Date(this._data.getTime()); }
-  get volume(): number { return this.valor * this.quantidade; }
-
   public static criaDe(dataString: string, quantidadeString: string, valorString: string): Negociacao {
     const exp = /-/g;
     const date = new Date(dataString.replace(exp, ','));
@@ -30,5 +27,24 @@ export class Negociacao {
     const valor = parseFloat(valorString);
 
     return new Negociacao(date, quantidade, valor);
+  }
+
+  // get quantidade(): number { return this.quantidade; }
+  // get valor(): number { return this.valor; }
+  get data(): Date { return new Date(this._data.getTime()); }
+  get volume(): number { return this.valor * this.quantidade; }
+  
+  public paraTexto(): string {
+    return `
+      Data: ${ this.data }
+      Quantidade: ${ this.quantidade }
+      Valor: ${ this.valor }
+    `;
+  }
+
+  public ehIgual(negociacao: Negociacao): boolean {
+    return this.data.getDate() === negociacao.data.getDate()
+      && this.data.getMonth() === negociacao.data.getMonth()
+      && this.data.getFullYear() === negociacao.data.getFullYear()
   }
 }

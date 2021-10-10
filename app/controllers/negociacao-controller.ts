@@ -38,12 +38,23 @@ export class NegociacaoController {
       return;
     }
     this.negociacoes.adiciona(negociacao);
+    console.log(negociacao.paraTexto());
+    console.log(this.negociacoes.paraTexto());
     this.limparFormulário();
     this.atualizaView();
   }
 
   importarDatos(): void {
     this.negociacaoService.obterNegocicacoesDoDia()
+      .then(negociacoesDeHoje => {
+        return negociacoesDeHoje.filter(negociacaoDeHoje => {
+          return !this.negociacoes
+            .lista()
+            .some(negociacao => negociacao
+              .ehIgual(negociacaoDeHoje)
+            );
+        })
+      })
       .then((negociacoesDeHoje) => {
         negociacoesDeHoje.forEach(negociacao => this.negociacoes.adiciona(negociacao));
         this.negociacoesView.update(this.negociacoes);
